@@ -1,0 +1,58 @@
+{
+  "name": "canvas-circular-countdown",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/CanvasCountdown360.js",
+  "files": [
+    "src/",
+    "dist/",
+    "lib/"
+  ],
+  "scripts": {
+    "test": "cross-env NODE_ENV=test mocha --require babel-core/register --colors ./test/*.spec.js",
+    "coverage": "nyc --reporter=text --reporter=lcov npm test",
+    "lint": "eslint src/**/*.js",
+    "build:umdmin": "webpack --mode=production --output-library-target=umd",
+    "build:umd": "webpack --mode=development --output-library-target=umd",
+    "build:commonjs": "webpack --mode=development --output-library-target=commonjs2",
+    "build": "npm-run-all build:*",
+    "dev:umd": "webpack --progress --colors --watch --mode=development --output-library-target=umd",
+    "dev:commonjs": "webpack --progress --colors --watch --mode=development --output-library-target=commonjs2",
+    "dev": "npm-run-all --parallel dev:*",
+    "prepublishOnly": "npm-run-all test build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georapbox/canvas-circular-countdown.git"
+  },
+  "keywords": [],
+  "author": "George Raptis <georapbox@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/georapbox/canvas-circular-countdown/issues"
+  },
+  "homepage": "https://github.com/georapbox/canvas-circular-countdown#readme",
+  "devDependencies": {
+    "babel-cli": "~6.26.0",
+    "babel-core": "~6.26.3",
+    "babel-loader": "~7.1.4",
+    "babel-plugin-add-module-exports": "~0.2.1",
+    "babel-plugin-transform-object-rest-spread": "~6.26.0",
+    "babel-preset-env": "~1.7.0",
+    "chai": "~4.1.2",
+    "cross-env": "~5.2.0",
+    "eslint": "~5.1.0",
+    "eslint-loader": "~2.1.0",
+    "mocha": "~5.2.0",
+    "npm-run-all": "~4.1.2",
+    "nyc": "~12.0.2",
+    "sinon": "~6.1.3",
+    "sinon-chai": "~3.2.0",
+    "webpack": "~4.16.1",
+    "webpack-cli": "~3.1.0",
+    "yargs": "~12.0.1"
+  },
+  "dependencies": {
+    "@georapbox/timer": "~1.0.0"
+  }
+}
