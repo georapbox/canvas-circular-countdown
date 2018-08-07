@@ -1,4 +1,6 @@
-# canvas-countdown-360
+# canvas-circular-countdown
+
+Configurable canvas circular countdown timer
 
 ## License
 
