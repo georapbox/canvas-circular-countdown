@@ -240,7 +240,7 @@
     // enforce a maximum line length
     "max-len": [
       1,
-      120,
+      150,
       2,
       {
         "ignoreComments": true,
