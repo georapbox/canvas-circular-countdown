@@ -15,7 +15,8 @@ export default class CanvasCircularCountdown {
       percentageFgColor: '#000000',
       percentageFontSize: '20px',
       percentageFontFamily: 'sans-serif',
-      showPercentage: true
+      showPercentage: true,
+      autoDraw: true
     };
 
     if (typeof options === 'function') {
@@ -29,7 +30,6 @@ export default class CanvasCircularCountdown {
       this._canvas = element;
     } else {
       const canvas = document.createElement('canvas');
-      element.style.height = `${this.options.radius * 2}px`;
       element.appendChild(canvas);
       this._canvas = canvas;
     }
@@ -43,7 +43,33 @@ export default class CanvasCircularCountdown {
     this._ctx = this._canvas.getContext('2d');
     this._canvas.width = this.options.radius * 2;
     this._canvas.height = this.options.radius * 2;
-    drawCanvas(100, this);
+
+    if (this.options.autoDraw) {
+      drawCanvas(100, this);
+    }
+  }
+
+  draw(settings) {
+    try {
+      delete settings.duration;
+    } catch (error) {}
+
+    const defaults = { ...this.options };
+
+    this.options = {
+      duration: this.options.duration,
+      ...defaults,
+      ...settings
+    };
+
+    const percentage = normalise(this._timer.time().remaining, 0, this.options.duration) * 100;
+
+    this._canvas.width = this.options.radius * 2;
+    this._canvas.height = this.options.radius * 2;
+
+    drawCanvas(percentage, this);
+
+    return this;
   }
 
   start(shouldReset = false) {
