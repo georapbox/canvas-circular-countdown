@@ -1,5 +1,6 @@
 import Timer from '@georapbox/timer';
 import drawCanvas from './drawCanvas';
+import makeHighResCanvas from './makeHighResCanvas';
 import normalise from './utils/normalise';
 
 export default class CanvasCircularCountdown {
@@ -15,8 +16,7 @@ export default class CanvasCircularCountdown {
       percentageFgColor: '#000000',
       percentageFontSize: '20px',
       percentageFontFamily: 'sans-serif',
-      showPercentage: true,
-      autoDraw: true
+      showPercentage: true
     };
 
     if (typeof options === 'function') {
@@ -40,36 +40,12 @@ export default class CanvasCircularCountdown {
       drawCanvas(percentage, this);
     });
 
-    this._ctx = this._canvas.getContext('2d');
     this._canvas.width = this.options.radius * 2;
     this._canvas.height = this.options.radius * 2;
 
-    if (this.options.autoDraw) {
-      drawCanvas(100, this);
-    }
-  }
+    this._ctx = makeHighResCanvas(this._canvas);
 
-  draw(settings) {
-    try {
-      delete settings.duration;
-    } catch (error) {}
-
-    const defaults = { ...this.options };
-
-    this.options = {
-      duration: this.options.duration,
-      ...defaults,
-      ...settings
-    };
-
-    const percentage = normalise(this._timer.time().remaining, 0, this.options.duration) * 100;
-
-    this._canvas.width = this.options.radius * 2;
-    this._canvas.height = this.options.radius * 2;
-
-    drawCanvas(percentage, this);
-
-    return this;
+    drawCanvas(100, this);
   }
 
   start(shouldReset = false) {
