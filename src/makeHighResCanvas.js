@@ -11,7 +11,6 @@ export default function makeHighResCanvas(canvas) {
 
   const ratio = devicePixelRatio / backingStoreRatio;
 
-  // upscale canvas if the two ratios don't match
   if (devicePixelRatio !== backingStoreRatio) {
     const oldWidth = canvas.width;
     const oldHeight = canvas.height;
