@@ -35,7 +35,7 @@ new CanvasCircularCountdown(element, [options], [callback])
 ### Instance methods
 
 ```js
-start([shouldReset = false]) ⇒ CanvasCircularCountdown
+start([shouldReset = false]) => CanvasCircularCountdown
 ```
 
 Start the timer. If the timer has been already started, the timer will just resume.
@@ -45,13 +45,13 @@ Start the timer. If the timer has been already started, the timer will just resu
 | [shouldReset] | <code>Boolean</code> | `false` | If set to `true`, the timer will reset to initial specified duration. |
 
 ```js
-stop() ⇒ CanvasCircularCountdown
+stop() => CanvasCircularCountdown
 ```
 
 Stop/Pause the timer.
 
 ```js
-reset([shouldStop = false]) ⇒ CanvasCircularCountdown
+reset([shouldStop = false]) => CanvasCircularCountdown
 ```
 
 Resets the timer to initial specified duration.
@@ -61,7 +61,7 @@ Resets the timer to initial specified duration.
 | [shouldStop] | <code>Boolean</code> | `false` | If set to `true`, the timer will be forced to stop; otherwise will reset and continue running. |
 
 ```js
-style(options = {}) ⇒ CanvasCircularCountdown
+style(options = {}) => CanvasCircularCountdown
 ```
 
 Change the styles of the circular countdown at any time while te timer running.
