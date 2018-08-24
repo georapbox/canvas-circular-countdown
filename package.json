@@ -25,7 +25,12 @@
     "type": "git",
     "url": "git+https://github.com/georapbox/canvas-circular-countdown.git"
   },
-  "keywords": [],
+  "keywords": [
+    "html5-canvas",
+    "progress-bar",
+    "countdown-timer",
+    "circularprogressbar"
+  ],
   "author": "George Raptis <georapbox@gmail.com>",
   "license": "MIT",
   "bugs": {
