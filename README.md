@@ -44,11 +44,15 @@ Start the timer. If the timer has been already started, the timer will just resu
 | --- | --- | --- | --- |
 | [shouldReset] | <code>Boolean</code> | `false` | If set to `true`, the timer will reset to initial specified duration. |
 
+---
+
 #### stop() ⇒ <code>CanvasCircularCountdown</code>
 
 Stop/Pause the timer.
 
 **Returns**: <code>CanvasCircularCountdown</code> - The CanvasCircularCountdown instance
+
+---
 
 #### reset([shouldStop = false]) ⇒ <code>CanvasCircularCountdown</code>
 
@@ -59,6 +63,8 @@ Resets the timer to initial specified duration.
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | [shouldStop] | <code>Boolean</code> | `false` | If set to `true`, the timer will be forced to stop; otherwise will reset and continue running. |
+
+---
 
 #### style(options = {}) ⇒ <code>CanvasCircularCountdown</code>
 
