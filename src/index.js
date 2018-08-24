@@ -6,17 +6,17 @@ import normalise from './utils/normalise';
 export default class CanvasCircularCountdown {
   constructor(element, options, callback) {
     const defaults = {
-      duration: 10 * 1000, // ms
+      duration: 60 * 1000, // ms
       radius: 150,
-      barWidth: 10,
-      barOffset: 5,
-      bgColor: '#ffffff',
-      emptyBarBgColor: '#dddddd',
-      filledBarBgColor: '#00bfeb',
-      percentageFgColor: '#000000',
-      percentageFontSize: '20px',
+      progressBarWidth: 10,
+      progressBarOffset: 5,
+      circleBackgroundColor: '#ffffff',
+      emptyProgressBarBackgroundColor: '#dddddd',
+      filledProgressBarBackgroundColor: '#00bfeb',
+      showPercentage: true,
+      percentageColor: '#343a40',
       percentageFontFamily: 'sans-serif',
-      showPercentage: true
+      percentageFontSize: '20px'
     };
 
     if (typeof options === 'function') {
@@ -47,7 +47,7 @@ export default class CanvasCircularCountdown {
     drawCanvas(100, this);
   }
 
-  style(options) {
+  style(options = {}) {
     try {
       delete options.duration;
     } catch (error) {}
