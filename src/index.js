@@ -37,7 +37,7 @@ export default class CanvasCircularCountdown {
     this._timer = new Timer(this.options.duration, timer => {
       const percentage = normalise(timer.time().remaining, 0, this.options.duration) * 100;
       drawCanvas(percentage, this);
-      callback && callback(percentage, timer.time());
+      callback && callback(percentage, timer.time(), this);
     });
 
     this._canvas.width = this.options.radius * 2;
