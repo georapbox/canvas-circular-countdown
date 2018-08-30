@@ -4,7 +4,7 @@ import makeHighResCanvas from './makeHighResCanvas';
 import normalise from './utils/normalise';
 
 export default class CanvasCircularCountdown {
-  constructor(element, options, callback) {
+  constructor(element, options, onTimerRunning) {
     const defaults = {
       duration: 60 * 1000, // ms
       radius: 150,
@@ -20,7 +20,7 @@ export default class CanvasCircularCountdown {
     };
 
     if (typeof options === 'function') {
-      callback = options;
+      onTimerRunning = options;
       options = {};
     }
 
@@ -37,7 +37,7 @@ export default class CanvasCircularCountdown {
     this._timer = new Timer(this.options.duration, timer => {
       const percentage = normalise(timer.time().remaining, 0, this.options.duration) * 100;
       drawCanvas(percentage, this);
-      callback && callback(percentage, timer.time(), this);
+      typeof onTimerRunning === 'function' && onTimerRunning(percentage, timer.time(), this);
     });
 
     this._canvas.width = this.options.radius * 2;

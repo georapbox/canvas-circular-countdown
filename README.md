@@ -7,14 +7,14 @@ Draw a configurable circular canvas countdown timer
 ### Instantiation
 
 ```js
-new CanvasCircularCountdown(element, [options], [callback])
+new CanvasCircularCountdown(element, [options], [onTimerRunning])
 ```
 
 | Param | Type | Description |
 | --- | --- | --- |
 | element | <code>HTMLElement</code> | (Required) The element that the countdown is drawn to. If is a `canvas` element, the countdown will be drawn on it; otherwise a `canvas`  element will be created and appended to `element`. |
 | [options] | <code>Object</code> | (Optional) Options that can be overriden by user. See below for more details about each option. |
-| [callback] | <code>Function</code> | (Optional) Function to be executed while timer is running. Parameters passed by include the percentage remaining, an object containing the remaining and elapsed time and the `CanvasCircularCountdown` instance. |
+| [onTimerRunning] | <code>Function</code> | (Optional) Function to be executed while timer is running. Parameters passed by include the percentage remaining, an object containing the remaining and elapsed time and the `CanvasCircularCountdown` instance. |
 
 ### Options
 
@@ -77,6 +77,7 @@ Change the styles of the circular countdown at any time while te timer running.
 Create a new instance of `CanvasCircularCountdown` with the default configuration and immediately start the countdown timer. Pause the countdown after 5 seconds have passed.
 
 #### HTML
+
 ```html
 <canvas id="countdown-canvas"></canvas>
 ```
@@ -96,6 +97,7 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), (percen
 Same as the above example, but with custom configuration.
 
 #### HTML
+
 ```html
 <canvas id="countdown-canvas"></canvas>
 ```
@@ -125,6 +127,7 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
 ### Example 3 - Change progress bar and percentage string color depending on percentage remaining
 
 #### HTML
+
 ```html
 <canvas id="countdown-canvas"></canvas>
 ```
@@ -151,6 +154,47 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
   filledProgressBarBackgroundColor: pickColorByPercentage,
   percentageColor: pickColorByPercentage
 }).start();
+```
+
+### Example 4 - Responsive canvas
+
+#### HTML
+
+```html
+<div id="countdown-container">
+  <canvas id="countdown-canvas"></canvas>
+</div>
+```
+
+#### CSS
+
+```CSS
+#countdown-container {
+  width: 100%;
+  max-width: 500px;
+}
+```
+
+#### Javascript
+
+```js
+const containerEl = document.getElementById('countdown-container');
+const countdownEl = document.getElementById('countdown-canvas');
+
+const countdown = new CanvasCircularCountdown(countdownEl, {
+  radius: containerEl.getBoundingClientRect().width / 2
+}).start();
+
+let resizeTimeout;
+
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+
+  resizeTimeout = setTimeout(() => {
+    countdownEl.style({
+      radius: containerEl.getBoundingClientRect().width / 2
+    });
+  }, 250);
 ```
 
 ## License
