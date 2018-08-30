@@ -26,11 +26,14 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 | progressBarOffset | <code>Number</code> | `5` | The number of pixels that will be left between the edges of the progress bar and the rest of the circle. |
 | circleBackgroundColor | <code>String</code> | `#ffffff` | The background color of the main circle. |
 | emptyProgressBarBackgroundColor | <code>String</code> | `#dddddd` | The background color of the progress bar when is empty. |
-| filledProgressBarBackgroundColor | <code>String\|Function</code> | `#00bfeb` | The background color of the progress bar when is filled. If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return a string for color. Useful when  you need to change the color of the progress bar depending on the remaining percentage or the remaining/elapsed time. |
-| showPercentage | <code>Boolean</code> | `true` | Whether the remaining percentage will be displayed or not. |
-| percentageColor | <code>String\|Function</code> | `#343a40` | The foreground color of the percentage string. If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return a string for color. Useful when  you need to change the color of the percentage string depending on the remaining percentage or the remaining/elapsed time. |
-| percentageFontFamily | <code>String</code> | `sans-serif` | The font family of the percentage string. |
-| percentageFontSize | <code>String</code> | `20px` | The font size of the percentage string. |
+| filledProgressBarBackgroundColor<sup>1</sup> | <code>String\|Function</code> | `#00bfeb` | The background color of the progress bar when is filled. |
+| captionText<sup>1</sup> | <code>String\|Function</code> | `undefined` | The text to be displayed as caption inside the countdown circle. By default if it is left as `undefined` and `showCaption` is set to true, the remaining percentage will be displayed. |
+| captionColor<sup>1</sup> | <code>String\|Function</code> | `#343a40` | The foreground color of the caption string. |
+| captionFontFamily | <code>String</code> | `sans-serif` | The font family of the caption string. |
+| captionFontSize<sup>1</sup> | <code>String\|Function</code> | `20px` | The font size of the caption string. |
+| showCaption<sup>1</sup> | <code>Boolean\|Function</code> | `true` | Whether the caption text inside the countdown circle will be displayed or not. |
+
+<sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when  you need to change the option's value depending on the remaining percentage or the remaining/elapsed time.*
 
 ### Instance methods
 
@@ -113,10 +116,10 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
   circleBackgroundColor: '#f5f5f5',
   emptyProgressBarBackgroundColor: '#b9c1c7',
   filledProgressBarBackgroundColor: '#17a2b8',
-  showPercentage: true,
-  percentageColor: '#6c757d',
-  percentageFontFamily: 'sans-serif',
-  percentageFontSize: '22px'
+  captionColor: '#6c757d',
+  captionFontFamily: 'sans-serif',
+  captionFontSize: '22px',
+  showCaption: true
 }, (percentage, time) => {
   if (time.elapsed >= 5000 ) {
     instance.stop();
@@ -124,7 +127,7 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
 }).start();
 ```
 
-### Example 3 - Change progress bar and percentage string color depending on percentage remaining
+### Example 3 - Change progress bar and caption string color depending on percentage remaining
 
 #### HTML
 
@@ -136,14 +139,12 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
 
 ```js
 const pickColorByPercentage = (percentage, time) => {
-  const prc = Math.ceil(percentage);
-
   switch (true) {
-    case prc >= 75:
+    case percentage >= 75:
       return '#28a745'; // green
-    case prc >= 50 && prc < 75:
+    case percentage >= 50 && percentage < 75:
       return '#17a2b8'; // blue
-    case prc >= 25 && prc < 50:
+    case percentage >= 25 && percentage < 50:
       return '#ffc107'; // orange
     default:
       return '#dc3545'; // red
@@ -152,7 +153,7 @@ const pickColorByPercentage = (percentage, time) => {
 
 new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
   filledProgressBarBackgroundColor: pickColorByPercentage,
-  percentageColor: pickColorByPercentage
+  captionColor: pickColorByPercentage
 }).start();
 ```
 
@@ -195,6 +196,24 @@ window.addEventListener('resize', () => {
       radius: containerEl.getBoundingClientRect().width / 2
     });
   }, 250);
+```
+
+### Example 5 - Change caption text depending on percentage
+
+```HTML
+<canvas id="countdown-canvas"></canvas>
+```
+
+```JS
+new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
+  captionText: percentage => {
+    if (percentage <= 25) {
+      return 'Time is running out!';
+    }
+
+    return 'There is time. Don\'t worry!';
+  }
+}).start();
 ```
 
 ## License

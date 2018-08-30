@@ -13,10 +13,10 @@ export default class CanvasCircularCountdown {
       circleBackgroundColor: '#ffffff',
       emptyProgressBarBackgroundColor: '#dddddd',
       filledProgressBarBackgroundColor: '#00bfeb',
-      showPercentage: true,
-      percentageColor: '#343a40',
-      percentageFontFamily: 'sans-serif',
-      percentageFontSize: '20px'
+      showCaption: true,
+      captionColor: '#343a40',
+      captionFontFamily: 'sans-serif',
+      captionFontSize: '20px'
     };
 
     if (typeof options === 'function') {
@@ -37,7 +37,7 @@ export default class CanvasCircularCountdown {
     this._timer = new Timer(this.options.duration, timer => {
       const percentage = normalise(timer.time().remaining, 0, this.options.duration) * 100;
       drawCanvas(percentage, this);
-      typeof onTimerRunning === 'function' && onTimerRunning(percentage, timer.time(), this);
+      typeof onTimerRunning === 'function' && onTimerRunning(Math.ceil(percentage), timer.time(), this);
     });
 
     this._canvas.width = this.options.radius * 2;
