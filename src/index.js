@@ -71,8 +71,8 @@ export default class CanvasCircularCountdown {
     return this;
   }
 
-  start(shouldReset = false) {
-    this._timer.start(shouldReset);
+  start() {
+    this._timer.start(false);
     return this;
   }
 
@@ -81,8 +81,9 @@ export default class CanvasCircularCountdown {
     return this;
   }
 
-  reset(shouldStop = false) {
-    this._timer.reset(shouldStop);
+  reset() {
+    this._timer.reset(true);
+    drawCanvas(100, this);
     return this;
   }
 }

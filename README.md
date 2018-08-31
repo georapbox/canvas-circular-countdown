@@ -38,14 +38,10 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 ### Instance methods
 
 ```js
-start([shouldReset = false]) => CanvasCircularCountdown
+start() => CanvasCircularCountdown
 ```
 
 Start the timer. If the timer has been already started, the timer will just resume.
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [shouldReset] | <code>Boolean</code> | `false` | If set to `true`, the timer will reset to initial specified duration. |
 
 ```js
 stop() => CanvasCircularCountdown
@@ -54,14 +50,10 @@ stop() => CanvasCircularCountdown
 Stop/Pause the timer.
 
 ```js
-reset([shouldStop = false]) => CanvasCircularCountdown
+reset() => CanvasCircularCountdown
 ```
 
 Resets the timer to initial specified duration.
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [shouldStop] | <code>Boolean</code> | `false` | If set to `true`, the timer will be forced to stop; otherwise will reset and continue running. |
 
 ```js
 style(options = {}) => CanvasCircularCountdown
