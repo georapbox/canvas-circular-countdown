@@ -8,15 +8,14 @@ export default class CanvasCircularCountdown {
     const defaults = {
       duration: 60 * 1000, // ms
       radius: 150,
-      progressBarWidth: 10,
+      progressBarWidth: 15,
       progressBarOffset: 5,
       circleBackgroundColor: '#ffffff',
       emptyProgressBarBackgroundColor: '#dddddd',
       filledProgressBarBackgroundColor: '#00bfeb',
       showCaption: true,
       captionColor: '#343a40',
-      captionFontFamily: 'sans-serif',
-      captionFontSize: '20px'
+      captionFont: '20px sans-serif'
     };
 
     if (typeof options === 'function') {

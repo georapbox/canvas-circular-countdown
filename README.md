@@ -22,15 +22,14 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 | --- | --- | --- | --- |
 | duration | <code>Number</code> | `60 * 1000` | The timer's duration in milliseconds. |
 | radius | <code>Number</code> | `150` | The radius of the circular countdown in pixels. |
-| progressBarWidth | <code>Number</code> | `10` | The circular progress bar in pixels. |
+| progressBarWidth | <code>Number</code> | `15` | The circular progress bar in pixels. |
 | progressBarOffset | <code>Number</code> | `5` | The number of pixels that will be left between the edges of the progress bar and the rest of the circle. |
 | circleBackgroundColor | <code>String</code> | `#ffffff` | The background color of the main circle. |
 | emptyProgressBarBackgroundColor | <code>String</code> | `#dddddd` | The background color of the progress bar when is empty. |
 | filledProgressBarBackgroundColor<sup>1</sup> | <code>String\|Function</code> | `#00bfeb` | The background color of the progress bar when is filled. |
 | captionText<sup>1</sup> | <code>String\|Function</code> | `undefined` | The text to be displayed as caption inside the countdown circle. By default if it is left as `undefined` and `showCaption` is set to true, the remaining percentage will be displayed. |
 | captionColor<sup>1</sup> | <code>String\|Function</code> | `#343a40` | The foreground color of the caption string. |
-| captionFontFamily | <code>String</code> | `sans-serif` | The font family of the caption string. |
-| captionFontSize<sup>1</sup> | <code>String\|Function</code> | `20px` | The font size of the caption string. |
+| captionFont<sup>1</sup> | <code>String\|Function</code> | `20px sans-serif` | The text style of the caption string. |
 | showCaption<sup>1</sup> | <code>Boolean\|Function</code> | `true` | Whether the caption text inside the countdown circle will be displayed or not. |
 
 <sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when  you need to change the option's value depending on the remaining percentage or the remaining/elapsed time.*
@@ -109,8 +108,7 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
   emptyProgressBarBackgroundColor: '#b9c1c7',
   filledProgressBarBackgroundColor: '#17a2b8',
   captionColor: '#6c757d',
-  captionFontFamily: 'sans-serif',
-  captionFontSize: '22px',
+  captionFont: '22px serif',
   showCaption: true
 }, (percentage, time) => {
   if (time.elapsed >= 5000 ) {

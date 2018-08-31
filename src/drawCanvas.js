@@ -20,22 +20,26 @@ export default function drawCanvas(percentage, instance) {
   instance._ctx.fill();
 
   // draw empty bar
-  instance._ctx.beginPath();
-  instance._ctx.arc(centerX, centerY, barRadius, circleStart, 4 * Math.PI, false);
-  instance._ctx.lineWidth = opts.progressBarWidth;
-  instance._ctx.strokeStyle = opts.emptyProgressBarBackgroundColor;
-  instance._ctx.stroke();
+  if (opts.progressBarWidth) {
+    instance._ctx.beginPath();
+    instance._ctx.arc(centerX, centerY, barRadius, circleStart, 4 * Math.PI, false);
+    instance._ctx.lineWidth = opts.progressBarWidth;
+    instance._ctx.strokeStyle = opts.emptyProgressBarBackgroundColor;
+    instance._ctx.stroke();
+  }
 
   // draw filled bar
-  instance._ctx.beginPath();
-  instance._ctx.arc(centerX, centerY, barRadius, circleStart, circleEnd, false);
-  instance._ctx.lineWidth = opts.progressBarWidth;
+  if (opts.progressBarWidth) {
+    instance._ctx.beginPath();
+    instance._ctx.arc(centerX, centerY, barRadius, circleStart, circleEnd, false);
+    instance._ctx.lineWidth = opts.progressBarWidth;
 
-  instance._ctx.strokeStyle = typeof opts.filledProgressBarBackgroundColor === 'function'
-    ? opts.filledProgressBarBackgroundColor(ceiledPercentage, instance._timer.time())
-    : opts.filledProgressBarBackgroundColor;
+    instance._ctx.strokeStyle = typeof opts.filledProgressBarBackgroundColor === 'function' ?
+      opts.filledProgressBarBackgroundColor(ceiledPercentage, instance._timer.time()) :
+      opts.filledProgressBarBackgroundColor;
 
-  instance._ctx.stroke();
+    instance._ctx.stroke();
+  }
 
   let shouldShowCaption = typeof opts.showCaption === 'function'
     ? opts.showCaption(ceiledPercentage, instance._timer.time())
@@ -46,11 +50,10 @@ export default function drawCanvas(percentage, instance) {
       ? opts.captionColor(ceiledPercentage, instance._timer.time())
       : opts.captionColor;
 
-    let captionFontSize = typeof opts.captionFontSize === 'function'
-      ? opts.captionFontSize(ceiledPercentage, instance._timer.time())
-      : opts.captionFontSize;
+    instance._ctx.font = typeof opts.captionFont === 'function'
+      ? opts.captionFont(ceiledPercentage, instance._timer.time())
+      : opts.captionFont;
 
-    instance._ctx.font = `${captionFontSize} ${opts.captionFontFamily}`;
     instance._ctx.textBaseline = 'middle';
     instance._ctx.textAlign = 'center';
 
