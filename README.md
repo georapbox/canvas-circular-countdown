@@ -79,7 +79,7 @@ Create a new instance of `CanvasCircularCountdown` with the default configuratio
 #### Javascript
 
 ```js
-new CanvasCircularCountdown(document.getElementById('countdown-canvas'), (percentage, time) => {
+new CanvasCircularCountdown(document.getElementById('countdown-canvas'), (percentage, time, instance) => {
   if (time.elapsed >= 5000 ) {
     instance.stop();
   }
