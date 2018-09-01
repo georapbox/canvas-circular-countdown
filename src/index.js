@@ -25,6 +25,10 @@ export default class CanvasCircularCountdown {
 
     this.options = { ...defaults, ...options };
 
+    if (typeof this.options.duration !== 'number') {
+      throw new TypeError(`Expected a number for duration, instead got ${typeof this.options.duration}`);
+    }
+
     if (element.nodeName === 'CANVAS') {
       this._canvas = element;
     } else {
@@ -71,6 +75,9 @@ export default class CanvasCircularCountdown {
   }
 
   start() {
+    if (this.options.duration === 0) {
+      return this;
+    }
     this._timer.start(false);
     return this;
   }
