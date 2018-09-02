@@ -21,7 +21,7 @@ export default function makeHighResCanvas(canvas) {
     canvas.style.height = oldHeight + 'px';
 
     ctx.scale(ratio, ratio);
-    ctx.translate(-canvas.width / 2 / devicePixelRatio, -canvas.height / 2 / devicePixelRatio);
+    ctx.translate(-canvas.width / 2 / ratio, -canvas.height / 2 / ratio);
   }
 
   return ctx;

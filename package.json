@@ -1,6 +1,6 @@
 {
   "name": "canvas-circular-countdown",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Draw a configurable circular canvas countdown timer",
   "main": "dist/CanvasCircularCountdown.js",
   "files": [

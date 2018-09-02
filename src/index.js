@@ -1,6 +1,5 @@
 import Timer from '@georapbox/timer';
 import drawCanvas from './drawCanvas';
-import makeHighResCanvas from './makeHighResCanvas';
 import normalise from './utils/normalise';
 
 export default class CanvasCircularCountdown {
@@ -45,7 +44,7 @@ export default class CanvasCircularCountdown {
 
     this._canvas.width = this.options.radius * 2;
     this._canvas.height = this.options.radius * 2;
-    this._ctx = makeHighResCanvas(this._canvas);
+    this._ctx = this._canvas.getContext('2d');
 
     drawCanvas(100, this);
   }
@@ -67,7 +66,6 @@ export default class CanvasCircularCountdown {
 
     this._canvas.width = this.options.radius * 2;
     this._canvas.height = this.options.radius * 2;
-    this._ctx = makeHighResCanvas(this._canvas);
 
     drawCanvas(percentage, this);
 
