@@ -16,9 +16,9 @@
   var countdown;
 
   function updateOnTimer(percentage, time) {
-    remainingPercentage.innerHTML = percentage;
-    remainingTime.innerHTML = Math.ceil(time.remaining);
-    elapsedTime.innerHTML = Math.ceil(time.elapsed);
+    remainingPercentage.textContent = percentage;
+    remainingTime.textContent = Math.ceil(time.remaining);
+    elapsedTime.textContent = Math.ceil(time.elapsed);
   }
 
   function setFormDefaults(options) {
