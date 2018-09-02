@@ -1,6 +1,17 @@
+[![npm version](https://img.shields.io/npm/v/canvas-circular-countdown.svg)](https://www.npmjs.com/package/canvas-circular-countdown)
+[![dependencies Status](https://david-dm.org/georapbox/canvas-circular-countdown/status.svg)](https://david-dm.org/georapbox/canvas-circular-countdown)
+[![devDependencies Status](https://david-dm.org/georapbox/canvas-circular-countdown/dev-status.svg)](https://david-dm.org/georapbox/canvas-circular-countdown?type=dev)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://georapbox.mit-license.org/@2018)
+
 # canvas-circular-countdown
 
 Draw a configurable circular canvas countdown timer
+
+## Install
+
+```sh
+$ npm install canvas-circular-countdown --save
+```
 
 ## API
 
@@ -29,10 +40,10 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 | filledProgressBarBackgroundColor<sup>1</sup> | <code>String\|Function</code> | `#00bfeb` | The background color of the progress bar when is filled. |
 | captionText<sup>1</sup> | <code>String\|Function</code> | `undefined` | The text to be displayed as caption inside the countdown circle. By default if it is left as `undefined` and `showCaption` is set to true, the remaining percentage will be displayed. |
 | captionColor<sup>1</sup> | <code>String\|Function</code> | `#343a40` | The foreground color of the caption string. |
-| captionFont<sup>1</sup> | <code>String\|Function</code> | `20px sans-serif` | The text style of the caption string. |
+| captionFont<sup>1</sup> | <code>String\|Function</code> | `20px sans-serif` | The text style of the caption string. Check [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font) for available values. |
 | showCaption<sup>1</sup> | <code>Boolean\|Function</code> | `true` | Whether the caption text inside the countdown circle will be displayed or not. |
 
-<sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when  you need to change the option's value depending on the remaining percentage or the remaining/elapsed time.*
+<sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when  you need to change some options' values depending on the remaining percentage or the remaining/elapsed time.*
 
 ### Instance methods
 
