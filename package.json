@@ -19,7 +19,7 @@
     "dev:umd": "webpack --progress --colors --watch --mode=development --output-library-target=umd",
     "dev:commonjs": "webpack --progress --colors --watch --mode=development --output-library-target=commonjs2",
     "dev": "npm-run-all --parallel dev:*",
-    "prepublishOnly": "npm-run-all test build"
+    "prepublishOnly": "npm-run-all build"
   },
   "repository": {
     "type": "git",
