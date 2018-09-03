@@ -2,14 +2,15 @@ export default function drawCanvas(percentage, instance) {
   const { options: opts } = instance;
   const circleStart = 1.5 * Math.PI;
   const circleEnd = circleStart + percentage / 50 * Math.PI;
-  const centerX = instance._canvas.width / 2;
-  const centerY = instance._canvas.height / 2;
   const ceiledPercentage = Math.ceil(percentage);
 
   // ensure that radius is not negative value
   let circleRadius = opts.radius < 0 ? 0 : opts.radius;
   let barRadius = opts.radius - opts.progressBarOffset - opts.progressBarWidth / 2;
   barRadius = barRadius < 0 ? 0 : barRadius;
+
+  const centerX = circleRadius;
+  const centerY = circleRadius;
 
   instance._ctx.clearRect(0, 0, instance._canvas.width, instance._canvas.height);
 
@@ -65,6 +66,6 @@ export default function drawCanvas(percentage, instance) {
       captionStr = opts.captionText(ceiledPercentage, instance._timer.time());
     }
 
-    instance._ctx.fillText(captionStr, instance._canvas.width / 2, instance._canvas.height / 2);
+    instance._ctx.fillText(captionStr, centerX, centerY);
   }
 }
