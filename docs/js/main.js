@@ -13,6 +13,7 @@
   var remainingTime = document.getElementById('remaining-time');
   var elapsedTime = document.getElementById('elapsed-time');
   var form = document.getElementById('options-form');
+  var codeEl = document.getElementById('code');
   var countdown;
 
   function updateOnTimer(percentage, time) {
@@ -31,7 +32,15 @@
     });
   }
 
+  function makeCode(options) {
+    var optionsStr = JSON.stringify(options, null, 2);
+    codeEl.textContent = 'new CanvasCircularCountdown(document.getElementById(\'countdown-canvas\'), ' + optionsStr + ', function onTimerRunning(percentage, time, instance) {\n  // Do your stuff here while timer is running...\n});';
+    window.hljs.highlightBlock(codeEl);
+  }
+
   countdown = new CanvasCircularCountdown(countdownCanvas, updateOnTimer);
+
+  makeCode(countdown.options);
 
   setFormDefaults(countdown.options);
 
@@ -75,6 +84,8 @@
     }
 
     countdown.style(options);
+
+    makeCode(countdown.options);
   }, false);
 
   newInstanceButton.addEventListener('click', function onNewInstanceCreated() {
@@ -91,6 +102,8 @@
       remaining: Number(form.duration.value),
       elapsed: 0
     });
+
+    makeCode(countdown.options);
 
     newInstanceSuccess.classList.add('visible');
     newInstanceButton.disabled = true;
