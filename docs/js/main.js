@@ -24,10 +24,12 @@
 
   function setFormDefaults(options) {
     Object.keys(options).forEach(function (key) {
-      if (form[key].type === 'checkbox') {
-        form[key].checked = options[key];
-      } else {
-        form[key].value = options[key] != null ? options[key] : '';
+      if (form[key]) {
+        if (form[key].type === 'checkbox') {
+          form[key].checked = options[key];
+        } else {
+          form[key].value = options[key] != null ? options[key] : '';
+        }
       }
     });
   }
