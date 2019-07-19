@@ -12,6 +12,8 @@ export default function drawCanvas(percentage, instance) {
   const centerX = circleRadius;
   const centerY = circleRadius;
 
+  instance._ctx.save();
+
   instance._ctx.clearRect(0, 0, instance._canvas.width, instance._canvas.height);
 
   // draw inner circle
@@ -35,9 +37,9 @@ export default function drawCanvas(percentage, instance) {
     instance._ctx.arc(centerX, centerY, barRadius, circleStart, circleEnd, false);
     instance._ctx.lineWidth = opts.progressBarWidth;
 
-    instance._ctx.strokeStyle = typeof opts.filledProgressBarBackgroundColor === 'function' ?
-      opts.filledProgressBarBackgroundColor(ceiledPercentage, instance._timer.time()) :
-      opts.filledProgressBarBackgroundColor;
+    instance._ctx.strokeStyle = typeof opts.filledProgressBarBackgroundColor === 'function'
+      ? opts.filledProgressBarBackgroundColor(ceiledPercentage, instance._timer.time())
+      : opts.filledProgressBarBackgroundColor;
 
     instance._ctx.stroke();
   }
@@ -67,5 +69,7 @@ export default function drawCanvas(percentage, instance) {
     }
 
     instance._ctx.fillText(captionStr, centerX, centerY);
+    instance._ctx.restore();
+    // instance._ctx.beginPath();
   }
 }
