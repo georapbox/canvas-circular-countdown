@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.3.0
+- Provide method to allow free drawing on canvas element for even more flexibility or advnaced cases.
+
+
 ## v1.2.0
 - Update dependencies to latest versions.
 - Update the build process according to the corresponding build tools (Webpack, Babel, etc) update.

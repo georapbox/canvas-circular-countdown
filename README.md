@@ -44,6 +44,7 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 | captionColor<sup>1</sup> | <code>String\|Function</code> | `#343a40` | The foreground color of the caption string. |
 | captionFont<sup>1</sup> | <code>String\|Function</code> | `20px sans-serif` | The text style of the caption string. Check [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font) for available values. |
 | showCaption<sup>1</sup> | <code>Boolean\|Function</code> | `true` | Whether the caption text inside the countdown circle will be displayed or not. |
+| draw | <code>Function</code> | <code>undefined</code> | A function that exposes `CanvasRenderingContext2D` to allow free drawing on the canvas element. The function is called with 2 arguments. The first argument is the `CanvasRenderingContext2D` and the second is an object with information like the canvas width/height, the remaining percentage and an object containing the remaining and elapsed time. |
 
 <sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when  you need to change some options' values depending on the remaining percentage or the remaining/elapsed time.*
 
@@ -215,6 +216,28 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
     }
 
     return 'There is time. Don\'t worry!';
+  }
+}).start();
+```
+
+### Example 6 - Free draw on canvas element
+
+```HTML
+<canvas id="countdown-canvas"></canvas>
+```
+
+```JS
+new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
+  draw: (ctx, opts) => {
+    // Draw a in the centre of the canvas element,
+    // with radius being 1/4 of the canvas width.
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(opts.width / 2, opts.height / 2, opts.width / 4, 0, 4 * Math.PI, false);
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = opts.percentage >= 50 ? '#008000' : '#ff0000'; // change color according to percentage
+    ctx.stroke();
+    ctx.restore();
   }
 }).start();
 ```

@@ -70,6 +70,16 @@ export default function drawCanvas(percentage, instance) {
 
     instance._ctx.fillText(captionStr, centerX, centerY);
     instance._ctx.restore();
-    // instance._ctx.beginPath();
+
+    if (typeof opts.draw === 'function') {
+      instance._ctx.beginPath();
+
+      opts.draw(instance._ctx, {
+        percentage: ceiledPercentage,
+        time: instance._timer.time(),
+        width: instance._canvas.width,
+        height: instance._canvas.height
+      });
+    }
   }
 }
