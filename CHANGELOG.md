@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.3.1
+- `draw` function takes the correct `width` and `height` properties; calculated using the circle radius and not the actual canvas dimensions which can be different on various platforms with different `devicePixelRatio`.
+
 ## v1.3.0
 - Provide method to allow free drawing on canvas element for even more flexibility or advnaced cases.
 
