@@ -95,6 +95,7 @@
 
     countdown = new window.CanvasCircularCountdown(countdownCanvas, {
       duration: Number(form.duration.value) || 0,
+      throttle: form.throttle.value ? Number(form.throttle.value) : void 0,
       captionText: void 0
     }, updateOnTimer);
 

@@ -71,7 +71,7 @@
 
           <p class="text-white-50">
             <small>
-              Create a new instance with different duration.
+              The following two options, <code>duration</code> and <code>throttle</code>, cannot be changed on the fly while the timer is running.
             </small>
           </p>
 
@@ -80,6 +80,20 @@
               <code>duration</code> (milliseconds)
             </label>
             <input type="number" class="form-control" name="duration" min="1000" step="1000">
+          </div>
+
+          <div class="form-group">
+            <label for="throttle">
+              <code>throttle</code> (milliseconds)
+            </label>
+            <select class="form-control" name="throttle">
+              <option value="">Undefined</option>
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="300">300</option>
+              <option value="400">400</option>
+              <option value="500">500</option>
+            </select>
           </div>
 
           <div class="form-group mb-5">

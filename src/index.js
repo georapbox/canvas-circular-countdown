@@ -2,6 +2,7 @@ import Timer from '@georapbox/timer';
 import drawCanvas from './drawCanvas';
 import makeHighResCanvas from './makeHighResCanvas';
 import normalise from './utils/normalise';
+import throttle from './utils/throttle';
 
 export default class CanvasCircularCountdown {
   constructor(element, options, onTimerRunning) {
@@ -37,11 +38,21 @@ export default class CanvasCircularCountdown {
       this._canvas = canvas;
     }
 
-    this._timer = new Timer(this.options.duration, timer => {
+    const timerCallback = timer => {
       const percentage = normalise(timer.time().remaining, 0, this.options.duration) * 100;
+
       drawCanvas(percentage, this);
-      typeof onTimerRunning === 'function' && onTimerRunning(Math.ceil(percentage), timer.time(), this);
-    });
+
+      if (typeof onTimerRunning === 'function') {
+        onTimerRunning(Math.ceil(percentage), timer.time(), this);
+      }
+    };
+
+    const shouldThrottle = typeof this.options.throttle === 'number'
+      && !Number.isNaN(this.options.throttle)
+      && this.options.throttle <= this.options.duration;
+
+    this._timer = new Timer(this.options.duration, shouldThrottle ? throttle(timerCallback, this.options.throttle) : timerCallback);
 
     this._canvas.width = this.options.radius * 2;
     this._canvas.height = this.options.radius * 2;
