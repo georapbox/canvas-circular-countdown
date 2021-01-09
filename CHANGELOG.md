@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.4.0 - 2021-01-09
+- Add `throttle` option to allow canvas drawing and timer's callback throttling.
+- Keep dependencies up to date.
 ## v1.3.1
 - `draw` function takes the correct `width` and `height` properties; calculated using the circle radius and not the actual canvas dimensions which can be different on various platforms with different `devicePixelRatio`.
 

@@ -7,7 +7,7 @@
 
 Draw a configurable circular canvas countdown timer.
 
-See [georapbox.github.io/canvas-circular-countdown](https://georapbox.github.io/canvas-circular-countdown/) for live demo.
+Check [here](https://georapbox.github.io/canvas-circular-countdown/) for a live demo.
 
 ## Install
 
