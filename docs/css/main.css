@@ -33,10 +33,14 @@ h1, h2, h3, h4, h5, h6,
   overflow: hidden !important;
 }
 
+.line-height-1 {
+  line-height: 1 !important;
+}
+
 /* custom */
 
 .page-title {
-  margin-top: 5rem;
+  margin-top: 3rem;
   text-align: center;
 }
 
@@ -61,7 +65,12 @@ h1, h2, h3, h4, h5, h6,
 
 @media only screen and (max-width: 540px) {
   .page-title {
-    margin-top: 3rem;
-    font-size: 2rem;
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .small, small {
+    font-size: 80%;
   }
 }
