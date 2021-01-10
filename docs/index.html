@@ -8,23 +8,23 @@
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/highlight-atom-one-dark.css">
+  <link rel="stylesheet" href="css/highlight-github.css">
 </head>
-<body class="bg-dark">
+<body>
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 mb-4">
+      <div class="col-lg-12">
         <h1 class="page-title">
           Canvas Circular Countdown
         </h1>
 
-        <div class="text-center mb-5">
+        <div class="text-center mb-4 mb-lg-5">
           <p>
             Draw a configurable circular canvas countdown timer
           </p>
 
           <p class="text-center">
-            <a href="https://github.com/georapbox/canvas-circular-countdown" target="_blank" class="btn btn-light github-button">
+            <a href="https://github.com/georapbox/canvas-circular-countdown" target="_blank" class="btn btn-dark github-button">
               View it on Github
             </a>
           </p>
@@ -32,190 +32,204 @@
       </div>
 
       <div class="col-lg-5">
-        <div class="countdown-container">
-          <div class="d-flex justify-content-center">
-            <div>
-              <canvas id="countdown-canvas"></canvas>
+        <div class="card h-100">
+          <div class="card-body">
+            <div class="card bg-secondary overflow-hidden h-100">
+              <div class="card-body mt-lg-3">
+                <div class="d-flex justify-content-center">
+                  <canvas id="countdown-canvas"></canvas>
+                </div>
+
+                <div class="text-center mx-auto my-4 my-lg-5 d-flex" style="max-width: 300px;">
+                  <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="start-btn">
+                    <img src="assets/play.svg" width="20" height="20" alt="Start" title="Start">
+                  </button>
+
+                  <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="stop-btn">
+                    <img src="assets/pause.svg" width="20" height="20" alt="Stop" title="Stop">
+                  </button>
+
+                  <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="reset-btn">
+                    <img src="assets/reset.svg" width="20" height="20" alt="Reset" title="Reset">
+                  </button>
+                </div>
+
+                <div class="card bg-dark text-light">
+                  <div class="card-body">
+                    <ul class="m-0 p-0" style="font-size: 0.95rem; list-style: none;">
+                      <li>Remaining percentage: <code id="remaining-percentage"></code>%</li>
+                      <li>Remaining time: <code id="remaining-time"></code> ms</li>
+                      <li>Elapsed time: <code id="elapsed-time"></code> ms</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div class="text-center mx-auto my-5 d-flex" style="max-width: 250px;">
-            <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="start-btn">
-              <img src="assets/play.svg" width="20" height="20" alt="Start" title="Start">
-            </button>
-
-            <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="stop-btn">
-              <img src="assets/pause.svg" width="20" height="20" alt="Stop" title="Stop">
-            </button>
-
-            <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="reset-btn">
-              <img src="assets/reset.svg" width="20" height="20" alt="Reset" title="Reset">
-            </button>
-          </div>
-
-          <div class="bg-dark p-3 rounded">
-            <ul class="pl-3" style="font-size: 0.95rem;">
-              <li>Remaining percentage: <code id="remaining-percentage"></code>%</li>
-              <li>Remaining time: <code id="remaining-time"></code> ms</li>
-              <li>Elapsed time: <code id="elapsed-time"></code> ms</li>
-            </ul>
           </div>
         </div>
       </div>
 
-      <div class="col-lg-7 mt-lg-0 mt-5 bg-dark">
-        <form id="options-form" autocomplete="off">
-          <h2 class="h4 mb-0">
-             New Instance
-          </h2>
+      <div class="col-lg-7 mt-4 mt-lg-0">
+        <div class="card">
+          <div class="card-body">
+            <form id="options-form" autocomplete="off">
+              <h2 class="h4 mb-0">
+                 New Instance
+              </h2>
 
-          <p class="text-white-50">
-            <small>
-              The following two options, <code>duration</code> and <code>throttle</code>, cannot be changed on the fly while the timer is running.
-            </small>
-          </p>
+              <p class="text-muted">
+                <small>
+                  The following two options, <code>duration</code> and <code>throttle</code>, cannot be changed on the fly while the timer is running.
+                </small>
+              </p>
 
-          <div class="form-group">
-            <label for="duration">
-              <code>duration</code> (milliseconds)
-            </label>
-            <input type="number" class="form-control" name="duration" min="1000" step="1000">
+              <div class="form-group">
+                <label for="duration">
+                  <code>duration</code> (milliseconds)
+                </label>
+                <input type="number" class="form-control" name="duration" min="1000" step="1000">
+              </div>
+
+              <div class="form-group">
+                <label for="throttle">
+                  <code>throttle</code> (milliseconds)
+                </label>
+                <select class="custom-select" name="throttle">
+                  <option value="">Undefined</option>
+                  <option value="100">100</option>
+                  <option value="200">200</option>
+                  <option value="300">300</option>
+                  <option value="400">400</option>
+                  <option value="500">500</option>
+                </select>
+              </div>
+
+              <div class="form-group mb-5">
+                <button type="button" class="btn btn-dark" id="new-instance-btn">
+                  Create new instance
+                </button>
+                <img class="new-instance-success" id="new-instance-success" src="assets/checkmark-circle.svg" width="25" height="25" alt="New instance created">
+              </div>
+
+              <h2 class="h4 mb-0">
+                Styling options
+              </h2>
+
+              <p class="text-muted">
+                <small>
+                  Change the options below to update the styling of the coundtown even when timer is running.
+                </small>
+              </p>
+
+              <div class="form-group">
+                <label for="radius">
+                  <code>radius</code>
+                </label>
+                <input type="number" class="form-control" name="radius" id="radius" min="0" step="1">
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="progressBarWidth">
+                    <code>progressBarWidth</code>
+                  </label>
+                  <input type="number" class="form-control" name="progressBarWidth" id="progressBarWidth" min="0" step="1">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="progressBarOffset">
+                    <code>progressBarOffset</code>
+                  </label>
+                  <input type="number" class="form-control" name="progressBarOffset" id="progressBarOffset" min="0" step="1">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="filledProgressBarBackgroundColor">
+                    <code>filledProgressBarBackgroundColor</code>
+                  </label>
+                  <input type="color" class="form-control" name="filledProgressBarBackgroundColor" id="filledProgressBarBackgroundColor">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="emptyProgressBarBackgroundColor">
+                    <code>emptyProgressBarBackgroundColor</code>
+                  </label>
+                  <input type="color" class="form-control" name="emptyProgressBarBackgroundColor" id="emptyProgressBarBackgroundColor">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="circleBackgroundColor">
+                  <code>circleBackgroundColor</code>
+                </label>
+                <input type="color" class="form-control" name="circleBackgroundColor" id="circleBackgroundColor">
+              </div>
+
+              <div class="form-group">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" name="showCaption" id="showCaption">
+                  <label class="custom-control-label" for="showCaption">
+                    <code>showCaption</code>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="captionColor">
+                    <code>captionColor</code>
+                  </label>
+                  <input type="color" class="form-control" name="captionColor" id="captionColor">
+                </div>
+
+                <div class="form-group col-md-6">
+                  <label for="captionFont">
+                    <code>captionFont</code>
+                  </label>
+                  <input type="text" class="form-control" name="captionFont" id="captionFont">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="captionFont">
+                  <code>captionText</code>
+                </label>
+                <input type="text" class="form-control" name="captionText" id="captionText">
+              </div>
+            </form>
           </div>
-
-          <div class="form-group">
-            <label for="throttle">
-              <code>throttle</code> (milliseconds)
-            </label>
-            <select class="form-control" name="throttle">
-              <option value="">Undefined</option>
-              <option value="100">100</option>
-              <option value="200">200</option>
-              <option value="300">300</option>
-              <option value="400">400</option>
-              <option value="500">500</option>
-            </select>
-          </div>
-
-          <div class="form-group mb-5">
-            <button type="button" class="btn btn-light" id="new-instance-btn">
-              Create new instance
-            </button>
-            <img class="new-instance-success" id="new-instance-success" src="assets/checkmark-circle.svg" width="25" height="25" alt="New instance created">
-          </div>
-
-          <h2 class="h4 mb-0">
-            Styling options
-          </h2>
-
-          <p class="text-white-50">
-            <small>
-              Change the options below to update the styling of the coundtown even when timer is running.
-            </small>
-          </p>
-
-          <div class="form-group">
-            <label for="radius">
-              <code>radius</code>
-            </label>
-            <input type="number" class="form-control" name="radius" id="radius" min="0" step="1">
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="progressBarWidth">
-                <code>progressBarWidth</code>
-              </label>
-              <input type="number" class="form-control" name="progressBarWidth" id="progressBarWidth" min="0" step="1">
-            </div>
-
-            <div class="form-group col-md-6">
-              <label for="progressBarOffset">
-                <code>progressBarOffset</code>
-              </label>
-              <input type="number" class="form-control" name="progressBarOffset" id="progressBarOffset" min="0" step="1">
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="filledProgressBarBackgroundColor">
-                <code>filledProgressBarBackgroundColor</code>
-              </label>
-              <input type="color" class="form-control border-0 p-0" name="filledProgressBarBackgroundColor" id="filledProgressBarBackgroundColor">
-            </div>
-
-            <div class="form-group col-md-6">
-              <label for="emptyProgressBarBackgroundColor">
-                <code>emptyProgressBarBackgroundColor</code>
-              </label>
-              <input type="color" class="form-control border-0 p-0" name="emptyProgressBarBackgroundColor" id="emptyProgressBarBackgroundColor">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="circleBackgroundColor">
-              <code>circleBackgroundColor</code>
-            </label>
-            <input type="color" class="form-control border-0 p-0" name="circleBackgroundColor" id="circleBackgroundColor">
-          </div>
-
-          <div class="form-group">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" name="showCaption" id="showCaption">
-              <label class="custom-control-label" for="showCaption">
-                <code>showCaption</code>
-              </label>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label for="captionColor">
-                <code>captionColor</code>
-              </label>
-              <input type="color" class="form-control border-0 p-0" name="captionColor" id="captionColor">
-            </div>
-
-            <div class="form-group col-md-6">
-              <label for="captionFont">
-                <code>captionFont</code>
-              </label>
-              <input type="text" class="form-control" name="captionFont" id="captionFont">
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="captionFont">
-              <code>captionText</code>
-            </label>
-            <input type="text" class="form-control" name="captionText" id="captionText">
-          </div>
-        </form>
+        </div>
       </div>
     </div>
 
-    <div class="row mt-5">
+    <div class="row mt-4 mt-lg-5">
       <div class="col-lg-12">
-        <h2 class="h4 mb-0">
-          Grab the code
-        </h2>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="h4 mb-0">
+              Grab the code
+            </h2>
 
-        <p class="text-white-50">
-          <small>
-            Below is the generated code for basic configuration based on the selected options above. For more advanced usages read the
-            <a class="text-white text-underline" href="https://github.com/georapbox/canvas-circular-countdown/blob/master/README.md" target="_blank">documentation</a>.
-          </small>
-        </p>
+            <p class="text-muted">
+              <small>
+                Below is the generated code for basic configuration based on the selected options above. For more advanced usages read the
+                <a class="text-underline" href="https://github.com/georapbox/canvas-circular-countdown/blob/master/README.md" target="_blank">documentation</a>.
+              </small>
+            </p>
 
-<pre id="code" class="javascript mt-3 mb-0 p-3"></pre>
+            <pre id="code" class="javascript mt-3 mb-0 p-3 rounded border"></pre>
+          </div>
+        </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-lg-12 pt-5 my-5">
+      <div class="col-lg-12 pt-2 my-4 my-lg-5">
         <p class="text-center">
           <small>
-            Licensed under <a class="text-white text-underline" href="https://georapbox.mit-license.org/@2018" target="_blank">The MIT License (MIT)</a>
+            Licensed under <a class="text-underline" href="https://georapbox.mit-license.org/@2018" target="_blank">The MIT License (MIT)</a>
           </small>
         </p>
       </div>
