@@ -95,7 +95,7 @@ Create a new instance of `CanvasCircularCountdown` with the default configuratio
 
 ```js
 new CanvasCircularCountdown(document.getElementById('countdown-canvas'), (percentage, time, instance) => {
-  if (time.elapsed >= 5000 ) {
+  if (time.elapsed >= 5000) {
     instance.stop();
   }
 }).start();
@@ -125,7 +125,7 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
   captionColor: '#6c757d',
   captionFont: '22px serif',
   showCaption: true
-}, (percentage, time) => {
+}, (percentage, time, instance) => {
   if (time.elapsed >= 5000 ) {
     instance.stop();
   }
