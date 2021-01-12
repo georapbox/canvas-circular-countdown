@@ -77,7 +77,7 @@ Change the styles of the circular countdown at any time while te timer running.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| options | <code>Object</code> | `{}` | Any of the options provided above can be changed apart from the `duration`. |
+| options | <code>Object</code> | `{}` | Any of the options provided above can be changed apart from the `duration` and `throttle` options. |
 
 ## Examples
 
