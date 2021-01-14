@@ -17,36 +17,7 @@ h1, h2, h3, h4, h5, h6,
   border: 0;
 }
 
-.custom-checkbox .custom-control-label::before {
-  border-radius: 2px;
-}
-
-.text-underline {
-  text-decoration: underline !important;
-}
-
-.overflow-hidden {
-  overflow: hidden !important;
-}
-
-.line-height-1 {
-  line-height: 1 !important;
-}
-
 /* custom */
-
-.page-title {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.github-button {
-  background-image: url(../assets/github-logo.svg);
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 26px;
-  padding-right: 38px;
-}
 
 .new-instance-success {
   opacity: 0;
@@ -61,7 +32,6 @@ h1, h2, h3, h4, h5, h6,
 
 @media only screen and (max-width: 540px) {
   .page-title {
-    margin-top: 1.5rem;
     font-size: 1.5rem;
     font-weight: 400;
   }

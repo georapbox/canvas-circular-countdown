@@ -11,55 +11,54 @@
   <link rel="stylesheet" href="css/highlight-github.css">
 </head>
 <body>
+  <div class="text-center my-4 my-lg-5 px-3">
+    <h1 class="page-title">
+      Canvas Circular Countdown
+    </h1>
+
+    <p>
+      Draw a configurable circular canvas countdown timer
+    </p>
+
+    <a href="https://github.com/georapbox/canvas-circular-countdown" target="_blank" rel="noopener noreferrer" class="btn btn-primary rounded-pill pl-3">
+      <span class="d-flex align-items-center justify-content-center">
+        Fork me on GitHub
+        <img src="assets/github-logo.svg" width="26" height="26" alt="GitHub" class="ml-2" />
+      </span>
+    </a>
+  </div>
+
   <div class="container">
     <div class="row">
-      <div class="col-lg-12">
-        <h1 class="page-title">
-          Canvas Circular Countdown
-        </h1>
-
-        <div class="text-center mb-4 mb-lg-5">
-          <p>
-            Draw a configurable circular canvas countdown timer
-          </p>
-
-          <p class="text-center">
-            <a href="https://github.com/georapbox/canvas-circular-countdown" target="_blank" rel="noopener noreferrer" class="btn btn-dark github-button">
-              View it on Github
-            </a>
-          </p>
-        </div>
-      </div>
-
       <div class="col-lg-5">
         <div class="card h-100">
           <div class="card-body p-0 p-md-3 m-0 m-md-1">
-            <div class="card bg-secondary overflow-hidden h-100">
+            <div class="card bg-dark overflow-hidden h-100">
               <div class="card-body mt-lg-3">
                 <div class="d-flex justify-content-center">
                   <canvas id="countdown-canvas"></canvas>
                 </div>
 
                 <div class="text-center mx-auto my-4 my-lg-5 d-flex" style="max-width: 300px;">
-                  <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="start-btn">
-                    <img src="assets/play.svg" width="20" height="20" alt="Start" title="Start">
+                  <button class="btn btn-block btn-sm btn-light my-0 mr-2" id="start-btn" title="Start">
+                    <img src="assets/play.svg" width="20" height="20" alt="Start">
                   </button>
 
-                  <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="stop-btn">
-                    <img src="assets/pause.svg" width="20" height="20" alt="Stop" title="Stop">
+                  <button class="btn btn-block btn-sm btn-light my-0 mr-2" id="stop-btn" title="Stop">
+                    <img src="assets/pause.svg" width="20" height="20" alt="Stop">
                   </button>
 
-                  <button class="btn btn-block btn-sm btn-dark my-0 mx-1" id="reset-btn">
-                    <img src="assets/reset.svg" width="20" height="20" alt="Reset" title="Reset">
+                  <button class="btn btn-block btn-sm btn-light my-0" id="reset-btn" title="Reset">
+                    <img src="assets/reset.svg" width="20" height="20" alt="Reset">
                   </button>
                 </div>
 
-                <div class="card bg-dark text-light">
-                  <div class="card-body">
-                    <ul class="m-0 p-0" style="font-size: 0.95rem; list-style: none;">
-                      <li>Remaining percentage: <code id="remaining-percentage"></code>%</li>
-                      <li>Remaining time: <code id="remaining-time"></code> ms</li>
-                      <li>Elapsed time: <code id="elapsed-time"></code> ms</li>
+                <div class="card">
+                  <div class="card-body p-0">
+                    <ul class="list-group list-group-flush rounded" style="font-size: 0.95rem; line-height: 1;">
+                      <li class="list-group-item">Remaining percentage: <code id="remaining-percentage"></code>%</li>
+                      <li class="list-group-item">Remaining time: <code id="remaining-time"></code>ms</li>
+                      <li class="list-group-item">Elapsed time: <code id="elapsed-time"></code>ms</li>
                     </ul>
                   </div>
                 </div>
@@ -105,10 +104,10 @@
               </div>
 
               <div class="form-group mb-5">
-                <button type="button" class="btn btn-dark" id="new-instance-btn">
+                <button type="button" class="btn btn-primary" id="new-instance-btn">
                   Create new instance
                 </button>
-                <img class="new-instance-success" id="new-instance-success" src="assets/checkmark-circle.svg" width="25" height="25" alt="New instance created">
+                <img class="new-instance-success" id="new-instance-success" src="assets/checkmark-circle.svg" width="30" height="30" alt="New instance created">
               </div>
 
               <h2 class="h4">
@@ -196,16 +195,14 @@
                 <label for="captionFont">
                   <code>captionText</code>
                 </label>
-                <input type="text" class="form-control" name="captionText" id="captionText">
+                <input type="text" class="form-control" name="captionText" id="captionText" placeholder="Type a custom caption text">
               </div>
             </form>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row mt-4 mt-lg-5">
-      <div class="col-lg-12">
+      <div class="col-lg-12 mt-4 mt-lg-5">
         <div class="card">
           <div class="card-body">
             <h2 class="h4">
@@ -215,7 +212,7 @@
             <p class="text-muted" style="line-height: 1.3;">
               <small>
                 Below is the generated code for basic configuration based on the selected options above. For more advanced usage read the
-                <a class="text-underline" href="https://github.com/georapbox/canvas-circular-countdown/blob/master/README.md" target="_blank" rel="noopener noreferrer">documentation</a>.
+                <a href="https://github.com/georapbox/canvas-circular-countdown/blob/master/README.md" target="_blank" rel="noopener noreferrer">documentation</a>.
               </small>
             </p>
 
@@ -224,16 +221,14 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-lg-12 pt-2 my-4 my-lg-5">
-        <p class="text-center">
-          <small>
-            Licensed under <a class="text-underline" href="https://georapbox.mit-license.org/@2018" target="_blank" rel="noopener noreferrer">The MIT License (MIT)</a>
-          </small>
-        </p>
-      </div>
-    </div>
+  <div class="text-center px-3 my-4 my-lg-5">
+    <p class="mb-0">
+      <small>
+        Licensed under <a href="https://georapbox.mit-license.org/@2018" target="_blank" rel="noopener noreferrer">The MIT License (MIT)</a>
+      </small>
+    </p>
   </div>
 
   <script src="https://unpkg.com/canvas-circular-countdown"></script>
