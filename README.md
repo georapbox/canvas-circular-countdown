@@ -15,6 +15,27 @@ Check [here](https://georapbox.github.io/canvas-circular-countdown/) for a live 
 $ npm install canvas-circular-countdown --save
 ```
 
+## Usage
+
+The library is exported in UMD (Universal Module Definition) format. You can import it the following ways:
+
+### Old school browser global
+```html
+<script src="https://unpkg.com/canvas-circular-countdown@<VERSION_GOES_HERE>/dist/CanvasCircularCountdown.min.js"></script>
+```
+
+### Using ESM import statement
+
+```js
+import CanvasCircularCountdown from 'canvas-circular-countdown';
+```
+
+### Using CommonJS require statement
+
+```js
+const CanvasCircularCountdown = require('canvas-circular-countdown');
+```
+
 ## API
 
 ### Instantiation
