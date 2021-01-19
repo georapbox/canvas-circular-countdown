@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.4.1 - 2021-01-19
+- Use the minified bundle in `main` field in `package.json`.
+- Add a "Usage" section in documentation.
+- Documentation minor improvements and fixes.
+- Demo page layout and styling updates.
+
 ## v1.4.0 - 2021-01-09
 - Add `throttle` option to allow canvas drawing and timer's callback throttling.
 - Keep dependencies up to date.
