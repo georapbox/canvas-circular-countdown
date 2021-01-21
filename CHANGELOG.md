@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.5.0 - 2021-01-21
+- Export library in UMD, CommonJS and ESM formats.
+- Remove external dependencies.
+- Replace Webpack with Rollup to bundle the library. 
+
 ## v1.4.1 - 2021-01-19
 - Use the minified bundle in `main` field in `package.json`.
 - Add a "Usage" section in documentation.

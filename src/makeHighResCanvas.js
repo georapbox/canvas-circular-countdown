@@ -2,12 +2,12 @@ export default function makeHighResCanvas(canvas) {
   const ctx = canvas.getContext('2d');
   const devicePixelRatio = window.devicePixelRatio || 1;
 
-  const backingStoreRatio = ctx.webkitBackingStorePixelRatio ||
-    ctx.mozBackingStorePixelRatio ||
-    ctx.msBackingStorePixelRatio ||
-    ctx.oBackingStorePixelRatio ||
-    ctx.backingStorePixelRatio ||
-    1;
+  const backingStoreRatio = ctx.webkitBackingStorePixelRatio
+    || ctx.mozBackingStorePixelRatio
+    || ctx.msBackingStorePixelRatio
+    || ctx.oBackingStorePixelRatio
+    || ctx.backingStorePixelRatio
+    || 1;
 
   const ratio = devicePixelRatio / backingStoreRatio;
 

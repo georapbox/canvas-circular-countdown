@@ -1,4 +1,4 @@
-import Timer from '@georapbox/timer';
+import Timer from './timer';
 import drawCanvas from './drawCanvas';
 import makeHighResCanvas from './makeHighResCanvas';
 import normalise from './utils/normalise';
