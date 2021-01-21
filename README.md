@@ -9,6 +9,8 @@ Draw a configurable circular canvas countdown timer.
 
 Check [here](https://georapbox.github.io/canvas-circular-countdown/) for a live demo.
 
+**NOTE:** Depends on `window.requestAnimationFrame`. If your environment does not support it, you can [polyfill](https://github.com/darius/requestAnimationFrame).
+
 ## Install
 
 ```sh
@@ -17,12 +19,7 @@ $ npm install canvas-circular-countdown --save
 
 ## Usage
 
-The library is exported in UMD (Universal Module Definition) format. You can import it the following ways:
-
-### Old school browser global
-```html
-<script src="https://unpkg.com/canvas-circular-countdown@<VERSION_GOES_HERE>/dist/CanvasCircularCountdown.min.js"></script>
-```
+The library is exported in UMD, CommonJS, and ESM formats. You can import it the following ways:
 
 ### Using ESM import statement
 
@@ -33,7 +30,12 @@ import CanvasCircularCountdown from 'canvas-circular-countdown';
 ### Using CommonJS require statement
 
 ```js
-const CanvasCircularCountdown = require('canvas-circular-countdown');
+const CanvasCircularCountdown = require('canvas-circular-countdown').default;
+```
+
+### Old school browser global
+```html
+<script src="https://unpkg.com/canvas-circular-countdown"></script>
 ```
 
 ## API
