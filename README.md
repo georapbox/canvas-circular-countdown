@@ -114,7 +114,7 @@ Create a new instance of `CanvasCircularCountdown` with the default configuratio
 <canvas id="countdown-canvas"></canvas>
 ```
 
-#### Javascript
+#### JavaScript
 
 ```js
 new CanvasCircularCountdown(document.getElementById('countdown-canvas'), (percentage, time, instance) => {
@@ -134,7 +134,7 @@ Same as the above example, but with custom configuration.
 <canvas id="countdown-canvas"></canvas>
 ```
 
-#### Javascript
+#### JavaScript
 
 ```js
 new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
@@ -163,7 +163,7 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
 <canvas id="countdown-canvas"></canvas>
 ```
 
-#### Javascript
+#### JavaScript
 
 ```js
 const pickColorByPercentage = (percentage, time) => {
@@ -197,14 +197,14 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
 
 #### CSS
 
-```CSS
+```css
 #countdown-container {
   width: 100%;
   max-width: 500px;
 }
 ```
 
-#### Javascript
+#### JavaScript
 
 ```js
 const containerEl = document.getElementById('countdown-container');
@@ -228,11 +228,15 @@ window.addEventListener('resize', () => {
 
 ### Example 5 - Change caption text depending on percentage
 
-```HTML
+#### HTML
+
+```html
 <canvas id="countdown-canvas"></canvas>
 ```
 
-```JS
+#### JavaScript
+
+```js
 new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
   captionText: percentage => {
     if (percentage <= 25) {
@@ -246,11 +250,15 @@ new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
 
 ### Example 6 - Free draw on canvas element
 
-```HTML
+#### HTML
+
+```html
 <canvas id="countdown-canvas"></canvas>
 ```
 
-```JS
+#### JavaScript
+
+```js
 new CanvasCircularCountdown(document.getElementById('countdown-canvas'), {
   draw: (ctx, opts) => {
     // Draw a in the centre of the canvas element,
