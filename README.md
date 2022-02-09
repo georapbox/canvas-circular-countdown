@@ -1,6 +1,4 @@
 [![npm version](https://img.shields.io/npm/v/canvas-circular-countdown.svg)](https://www.npmjs.com/package/canvas-circular-countdown)
-[![dependencies Status](https://status.david-dm.org/gh/georapbox/canvas-circular-countdown.svg)](https://david-dm.org/georapbox/canvas-circular-countdown)
-[![devDependencies Status](https://status.david-dm.org/gh/georapbox/canvas-circular-countdown.svg?type=dev)](https://david-dm.org/georapbox/canvas-circular-countdown?type=dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://georapbox.mit-license.org/@2018)
 
 # canvas-circular-countdown
