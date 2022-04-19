@@ -9,7 +9,7 @@ export default class CanvasCircularCountdown {
     const defaults = {
       duration: 60 * 1000, // ms
       radius: 150,
-      elapsed: 0,
+      elapsedTime: 0,
       progressBarWidth: 15,
       progressBarOffset: 5,
       circleBackgroundColor: '#ffffff',
@@ -31,8 +31,8 @@ export default class CanvasCircularCountdown {
       throw new TypeError(`Expected a number for duration, instead got ${typeof this.options.duration}`);
     }
 
-    if (typeof this.options.elapsed !== 'number') {
-      throw new TypeError(`Expected a number for elapsed, instead got ${typeof this.options.elapsed}`);
+    if (typeof this.options.elapsedTime !== 'number') {
+      throw new TypeError(`Expected a number for elapsedTime, instead got ${typeof this.options.elapsedTime}`);
     }
 
     if (element.nodeName === 'CANVAS') {
@@ -57,7 +57,7 @@ export default class CanvasCircularCountdown {
       && !Number.isNaN(this.options.throttle)
       && this.options.throttle <= this.options.duration;
 
-    this._timer = new Timer(this.options.duration, this.options.elapsed, shouldThrottle ? throttle(timerCallback, this.options.throttle) : timerCallback);
+    this._timer = new Timer(this.options.duration, this.options.elapsedTime, shouldThrottle ? throttle(timerCallback, this.options.throttle) : timerCallback);
 
     this._canvas.width = this.options.radius * 2;
     this._canvas.height = this.options.radius * 2;
