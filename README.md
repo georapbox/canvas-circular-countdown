@@ -55,6 +55,8 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | duration | <code>Number</code> | `60 * 1000` | The timer's duration in milliseconds. |
+| elapsed | <code>Number</code> | `0` | The time has elapsed in
+miliseconds. |
 | radius | <code>Number</code> | `150` | The radius of the circular countdown in pixels. |
 | progressBarWidth | <code>Number</code> | `15` | The circular progress bar in pixels. |
 | progressBarOffset | <code>Number</code> | `5` | The number of pixels that will be left between the edges of the progress bar and the rest of the circle. |
