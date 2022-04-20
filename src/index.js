@@ -35,6 +35,10 @@ export default class CanvasCircularCountdown {
       throw new TypeError(`Expected a number for elapsedTime, instead got ${typeof this.options.elapsedTime}`);
     }
 
+    if (this.options.elapsedTime > this.options.duration) {
+      this.options.elapsedTime = this.options.duration;
+    }
+
     if (element.nodeName === 'CANVAS') {
       this._canvas = element;
     } else {
