@@ -46,9 +46,9 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 
 | Param | Type | Description |
 | --- | --- | --- |
-| element | <code>HTMLElement</code> | (Required) The element that the countdown is drawn to. If is a `canvas` element, the countdown will be drawn on it; otherwise a `canvas`  element will be created and appended to `element`. |
-| [options] | <code>Object</code> | (Optional) Options that can be overriden by user. See below for more details about each option. |
-| [onTimerRunning] | <code>Function</code> | (Optional) Function to be executed while timer is running. Parameters passed by include the percentage remaining, an object containing the remaining and elapsed time and the `CanvasCircularCountdown` instance. |
+| `element` | HTMLElement | (Required) The element that the countdown is drawn to. If is a `canvas` element, the countdown will be drawn on it; otherwise a `canvas`  element will be created and appended to `element`. |
+| `options` | Object | (Optional) Options that can be overriden by user. See below for more details about each option. |
+| `onTimerRunning` | Function | (Optional) Function to be executed while timer is running. Parameters passed by include the percentage remaining, an object containing the remaining and elapsed time and the `CanvasCircularCountdown` instance. |
 
 ### Options
 
