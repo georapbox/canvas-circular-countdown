@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.6.0 - 2022-04-22
+
+- Support `elapsedTime` in countdown options. Resolves issue [#21](https://github.com/georapbox/canvas-circular-countdown/issues/21)
+
 ## v1.5.0 - 2021-01-21
 - Export library in UMD, CommonJS and ESM formats.
 - Remove external dependencies.

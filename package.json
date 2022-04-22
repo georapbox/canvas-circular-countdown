@@ -1,6 +1,6 @@
 {
   "name": "canvas-circular-countdown",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Draw a configurable circular canvas countdown timer",
   "main": "dist/CanvasCircularCountdown.umd.min.js",
   "module": "dist/CanvasCircularCountdown.esm.min.js",

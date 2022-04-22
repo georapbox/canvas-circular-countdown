@@ -20,7 +20,8 @@ class Timer {
    * Timer constructor
    *
    * @constructor Timer
-   * @param {Number} [duration] The timer's duration (ms). If left `undefined` or `0` or negative number the timer counts up instead of down.
+   * @param {Number} duration The timer's duration (ms).
+   * @param {Number} elapsedTime The time that has elapsed (ms).
    * @param {Function} [callback] Function to be executed while timer is running. The Timer instance is passed by as parameter.
    */
   constructor(duration, elapsedTime, callback) {
@@ -28,16 +29,8 @@ class Timer {
     this._now = 0;
     this._time = elapsedTime;
     this._duration = duration;
+    this._elapsedTime = elapsedTime;
     this._callback = callback;
-
-    if (duration < 0) {
-      this._duration = 0;
-    }
-
-    if (!duration || typeof duration === 'function') {
-      this._duration = 0;
-      this._callback = duration;
-    }
   }
 
   /**
@@ -104,7 +97,7 @@ class Timer {
       this.stop();
     }
 
-    this._time = 0;
+    this._time = this._elapsedTime;
     return this;
   }
 

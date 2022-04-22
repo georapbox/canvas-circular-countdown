@@ -27,16 +27,24 @@ export default class CanvasCircularCountdown {
 
     this.options = { ...defaults, ...options };
 
-    if (typeof this.options.duration !== 'number') {
-      throw new TypeError(`Expected a number for duration, instead got ${typeof this.options.duration}`);
+    if (typeof this.options.duration !== 'number' || Number.isNaN(this.options.duration)) {
+      throw new TypeError('Expected a number for "duration"');
     }
 
-    if (typeof this.options.elapsedTime !== 'number') {
-      throw new TypeError(`Expected a number for elapsedTime, instead got ${typeof this.options.elapsedTime}`);
+    if (typeof this.options.elapsedTime !== 'number' || Number.isNaN(this.options.elapsedTime)) {
+      throw new TypeError('Expected a number for "elapsedTime"');
+    }
+
+    if (this.options.duration < 0) {
+      this.options.duration = 0;
     }
 
     if (this.options.elapsedTime > this.options.duration) {
       this.options.elapsedTime = this.options.duration;
+    }
+
+    if (this.options.elapsedTime < 0) {
+      this.options.elapsedTime = 0;
     }
 
     if (element.nodeName === 'CANVAS') {
@@ -48,7 +56,7 @@ export default class CanvasCircularCountdown {
     }
 
     const timerCallback = timer => {
-      const percentage = normalise(timer.time().remaining, 0, this.options.duration) * 100;
+      const percentage = normalise(timer.time().remaining, 0, this.options.duration) * 100 || 0;
 
       drawCanvas(percentage, this);
 
@@ -67,7 +75,9 @@ export default class CanvasCircularCountdown {
     this._canvas.height = this.options.radius * 2;
     this._ctx = makeHighResCanvas(this._canvas);
 
-    drawCanvas(100, this);
+    const percentage = normalise(this._timer.time().remaining, 0, this.options.duration) * 100 || 0;
+
+    drawCanvas(percentage, this);
   }
 
   style(options = {}) {
@@ -83,7 +93,7 @@ export default class CanvasCircularCountdown {
       ...options
     };
 
-    const percentage = normalise(this._timer.time().remaining, 0, this.options.duration) * 100;
+    const percentage = normalise(this._timer.time().remaining, 0, this.options.duration) * 100 || 0;
 
     this._canvas.width = this.options.radius * 2;
     this._canvas.height = this.options.radius * 2;
@@ -109,7 +119,8 @@ export default class CanvasCircularCountdown {
 
   reset() {
     this._timer.reset(true);
-    drawCanvas(100, this);
+    const percentage = normalise(this._timer.time().remaining, 0, this.options.duration) * 100 || 0;
+    drawCanvas(percentage, this);
     return this;
   }
 }

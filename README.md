@@ -54,23 +54,22 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| duration | <code>Number</code> | `60 * 1000` | The timer's duration in milliseconds. |
-| elapsedTime | <code>Number</code> | `0` | The time that has elapsed in
-miliseconds. |
-| radius | <code>Number</code> | `150` | The radius of the circular countdown in pixels. |
-| progressBarWidth | <code>Number</code> | `15` | The circular progress bar in pixels. |
-| progressBarOffset | <code>Number</code> | `5` | The number of pixels that will be left between the edges of the progress bar and the rest of the circle. |
-| circleBackgroundColor | <code>String</code> | `#ffffff` | The background color of the main circle. |
-| emptyProgressBarBackgroundColor | <code>String</code> | `#dddddd` | The background color of the progress bar when is empty. |
-| filledProgressBarBackgroundColor <sup>1</sup> | <code>String\|Function</code> | `#00bfeb` | The background color of the progress bar when is filled. |
-| captionText <sup>1</sup> | <code>String\|Function</code> | `undefined` | The text to be displayed as caption inside the countdown circle. By default if it is left as `undefined` and `showCaption` is set to true, the remaining percentage will be displayed. |
-| captionColor <sup>1</sup> | <code>String\|Function</code> | `#343a40` | The foreground color of the caption string. |
-| captionFont <sup>1</sup> | <code>String\|Function</code> | `20px sans-serif` | The text style of the caption string. Check [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font) for available values. |
-| showCaption <sup>1</sup> | <code>Boolean\|Function</code> | `true` | Whether the caption text inside the countdown circle will be displayed or not. |
-| draw | <code>Function</code> | <code>undefined</code> | A function that exposes `CanvasRenderingContext2D` to allow free drawing on the canvas element. The function is called with 2 arguments. The first argument is the `CanvasRenderingContext2D` and the second is an object with information like the canvas width/height, the remaining percentage and an object containing the remaining and elapsed time. |
-| throttle | <code>Number</code> | `undefined` | Throttle duration in milliseconds. Must be a number lower or equal to the `duration` option. If provided, it limits the number of times the canvas is drawn in the given period, therefore the number of times the callback function `onTimerRunning` can be called. You can use it if you perform heavy tasks inside the `onTimerRunning` callback function to improve performance. Always prefer small numbers, eg. 250, etc |
+| `duration` | Number | `60 * 1000` | The timer's duration in milliseconds. |
+| `elapsedTime` | Number | `0` | The time that has elapsed in miliseconds. |
+| `radius` | Number | `150` | The radius of the circular countdown in pixels. |
+| `progressBarWidth` | Number | `15` | The circular progress bar in pixels. |
+| `progressBarOffset` | Number | `5` | The number of pixels that will be left between the edges of the progress bar and the rest of the circle. |
+| `circleBackgroundColor` | String | `"#ffffff"` | The background color of the main circle. |
+| `emptyProgressBarBackgroundColor` | String | `"#dddddd"` | The background color of the progress bar when is empty. |
+| `filledProgressBarBackgroundColor` <sup>1</sup> | String\|Function | `"#00bfeb"` | The background color of the progress bar when is filled. |
+| `captionText` <sup>1</sup> | String\|Function | `undefined` | The text to be displayed as caption inside the countdown circle. By default if it is left as `undefined` and `showCaption` is set to true, the remaining percentage will be displayed. |
+| `captionColor` <sup>1</sup> | String\|Function | `"#343a40"` | The foreground color of the caption string. |
+| `captionFont` <sup>1</sup> | String\|Function | `"20px sans-serif"` | The text style of the caption string. Check [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font) for available values. |
+| `showCaption` <sup>1</sup> | Boolean\|Function | `true` | Whether the caption text inside the countdown circle will be displayed or not. |
+| `draw` | Function | `undefined` | A function that exposes `CanvasRenderingContext2D` to allow free drawing on the canvas element. The function is called with 2 arguments. The first argument is the `CanvasRenderingContext2D` and the second is an object with information like the canvas width/height, the remaining percentage and an object containing the remaining and elapsed time. |
+| `throttle` | Number | `undefined` | Throttle duration in milliseconds. Must be a number lower or equal to the `duration` option. If provided, it limits the number of times the canvas is drawn in the given period, therefore the number of times the callback function `onTimerRunning` can be called. You can use it if you perform heavy tasks inside the `onTimerRunning` callback function to improve performance. Always prefer small numbers, eg. 250, etc |
 
-<sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when  you need to change some options' values depending on the remaining percentage or the remaining/elapsed time.*
+<sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when you need to change some options' values depending on the remaining percentage or the remaining/elapsed time.*
 
 ### Instance methods
 
@@ -90,7 +89,7 @@ Stop/Pause the timer.
 reset() => CanvasCircularCountdown
 ```
 
-Resets the timer to initial specified duration.
+Resets the timer to initial specified duration. If `elapsedTime` is provided, the countdown will take this value into consideration.
 
 ```js
 style(options = {}) => CanvasCircularCountdown
