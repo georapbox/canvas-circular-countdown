@@ -8,8 +8,8 @@ export default class CanvasCircularCountdown {
   constructor(element, options, onTimerRunning) {
     const defaults = {
       duration: 60 * 1000, // ms
+      elapsedTime: 0, // ms
       radius: 150,
-      elapsedTime: 0,
       progressBarWidth: 15,
       progressBarOffset: 5,
       circleBackgroundColor: '#ffffff',

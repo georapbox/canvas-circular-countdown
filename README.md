@@ -89,7 +89,7 @@ Stop/Pause the timer.
 reset() => CanvasCircularCountdown
 ```
 
-Resets the timer to initial specified duration. If `elapsedTime` is provided, the countdown will take this value into consideration.
+Resets the timer to initial specified `duration` extracting the `elapsedTime` if provided.
 
 ```js
 style(options = {}) => CanvasCircularCountdown
