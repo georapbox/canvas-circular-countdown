@@ -100,7 +100,22 @@ class Timer {
     this._time = this._elapsedTime;
     return this;
   }
-
+  
+  /**
+   * Hard sets the timer to a specified duration.
+   *
+   * @memberof Timer
+   * @this {Timer}
+   * @param {Number} [time] The time to set the timer to (ms). If it is greater than the duration, it will not do anything.
+   * @returns {Timer} The Timer instance.
+   */
+  set(time) {
+    if (time <= this._duration) {
+      this._time = time;
+    }
+    return this;
+  }
+  
   /**
    * Check (at any time) if the timer is running or not.
    *
