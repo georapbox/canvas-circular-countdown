@@ -27,25 +27,8 @@ export default class CanvasCircularCountdown {
 
     this.options = { ...defaults, ...options };
 
-    if (typeof this.options.duration !== 'number' || Number.isNaN(this.options.duration)) {
-      throw new TypeError('Expected a number for "duration"');
-    }
-
-    if (typeof this.options.elapsedTime !== 'number' || Number.isNaN(this.options.elapsedTime)) {
-      throw new TypeError('Expected a number for "elapsedTime"');
-    }
-
-    if (this.options.duration < 0) {
-      this.options.duration = 0;
-    }
-
-    if (this.options.elapsedTime > this.options.duration) {
-      this.options.elapsedTime = this.options.duration;
-    }
-
-    if (this.options.elapsedTime < 0) {
-      this.options.elapsedTime = 0;
-    }
+    this.setDuration(this.options.duration);
+    this.setElapsedTime(this.options.elapsedTime);
 
     if (element.nodeName === 'CANVAS') {
       this._canvas = element;
@@ -80,17 +63,52 @@ export default class CanvasCircularCountdown {
     drawCanvas(percentage, this);
   }
 
-  style(options = {}) {
-    try {
-      delete options.duration;
-    } catch (error) {}
+  setDuration(duration) {
+    if (typeof duration !== 'number' || Number.isNaN(duration)) {
+      throw new TypeError('Expected a number for "duration"');
+    }
 
+    if (duration < 0) {
+      duration = 0;
+    }
+
+    this.options.duration = duration;
+
+    if (this._timer) {
+      this._timer.setDuration(duration);
+    }
+  }
+
+  setElapsedTime(elapsedTime) {
+    if (typeof elapsedTime !== 'number' || Number.isNaN(elapsedTime)) {
+      throw new TypeError('Expected a number for "elapsedTime"');
+    }
+
+    if (elapsedTime > this.options.duration) {
+      elapsedTime = this.options.duration;
+      console.log(elapsedTime);
+    }
+
+    if (elapsedTime < 0) {
+      elapsedTime = 0;
+    }
+
+    this.options.elapsedTime = elapsedTime;
+
+    if (this._timer) {
+      this._timer.setElapsedTime(elapsedTime);
+    }
+  }
+
+  style(options = {}) {
     const defaults = { ...this.options };
 
     this.options = {
-      duration: this.options.duration,
       ...defaults,
-      ...options
+      ...options,
+      duration: this.options.duration,
+      elapsedTime: this.options.elapsedTime,
+      throttle: this.options.throttle
     };
 
     const percentage = normalise(this._timer.time().remaining, 0, this.options.duration) * 100 || 0;
