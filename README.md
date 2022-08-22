@@ -54,8 +54,8 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| `duration` | Number | `60 * 1000` | The timer's duration in milliseconds. |
-| `elapsedTime` | Number | `0` | The time that has elapsed in milliseconds. |
+| `duration` | Number | `60 * 1000` | The timer's duration in milliseconds. Throws `TypeError` if the provided value is not a `Number` or is `NaN`. |
+| `elapsedTime` | Number | `0` | The time that has elapsed in milliseconds. Throws `TypeError` if the provided value is not a `Number` or is `NaN`. |
 | `radius` | Number | `150` | The radius of the circular countdown in pixels. |
 | `progressBarWidth` | Number | `15` | The circular progress bar in pixels. |
 | `progressBarOffset` | Number | `5` | The number of pixels that will be left between the edges of the progress bar and the rest of the circle. |
@@ -102,7 +102,7 @@ reset() => CanvasCircularCountdown
 Change the styles of the circular countdown at any time while te timer running.
 
 | Param | Type | Default | Description |
-| --- | --- | --- | --- |
+| ----- | ---- | ------- | ----------- |
 | options | <code>Object</code> | `{}` | Any of the options provided above can be changed apart from the `duration`, `elapsedTime` and `throttle` options. |
 
 ```js
@@ -113,6 +113,10 @@ style(options = {}) => CanvasCircularCountdown
 
 Set the timer's duration (in milliseconds), at any time, even when the timer is running.
 
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| time | `Number` | - | The timer's duration in milliseconds. Throws `TypeError` if the provided value is not a `Number` or is `NaN`. |
+
 ```js
 setDuration(time) => CanvasCircularCountdown
 ```
@@ -120,6 +124,10 @@ setDuration(time) => CanvasCircularCountdown
 #### setElapsedTime(time)
 
 Set the timer's elapsed time (in milliseconds), at any time, even when the timer is running.
+
+| Param | Type | Default | Description |
+| ----- | ---- | ------- | ----------- |
+| time | `Number` | - | The timer's elapsed time in milliseconds. Throws `TypeError` if the provided value is not a `Number` or is `NaN`. |
 
 ```js
 setElapsedTime(time) => CanvasCircularCountdown
