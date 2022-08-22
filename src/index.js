@@ -86,7 +86,6 @@ export default class CanvasCircularCountdown {
 
     if (elapsedTime > this.options.duration) {
       elapsedTime = this.options.duration;
-      console.log(elapsedTime);
     }
 
     if (elapsedTime < 0) {
