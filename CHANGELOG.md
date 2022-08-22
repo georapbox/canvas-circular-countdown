@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v1.7.0 - 2022-08-22
+
+- Add instance methods `setDuration()` and `setElapsedTime()` to update the countdown's duration and elapsed time respectively, at any time, even when time is running. See issue [#26](https://github.com/georapbox/canvas-circular-countdown/issues/26).
+- Ensure that if `style()` method is called with options object that includes the `elapsedTime` or `throttle` properties, that they won't override the values set before.
+- Update dev dependencies.
+
 ## v1.6.0 - 2022-04-22
 
 - Support `elapsedTime` in countdown options. Resolves issue [#21](https://github.com/georapbox/canvas-circular-countdown/issues/21)

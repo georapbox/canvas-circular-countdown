@@ -29,7 +29,7 @@ class Timer {
     this._now = 0;
     this._time = elapsedTime;
     this._duration = duration;
-    this._elapsedTime = elapsedTime;
+    this._defaultElapsedTime = elapsedTime;
     this._callback = callback;
   }
 
@@ -97,7 +97,7 @@ class Timer {
       this.stop();
     }
 
-    this._time = this._elapsedTime;
+    this._time = this._defaultElapsedTime;
     return this;
   }
 
@@ -110,6 +110,32 @@ class Timer {
    */
   isRunning() {
     return this._started;
+  }
+
+  /**
+   * Set timer's duration.
+   *
+   * @memberof Timer
+   * @this {Timer}
+   * @param {Number} duration The timer's duration (ms).
+   * @returns {Timer} The Timer instance.
+   */
+  setDuration(duration) {
+    this._duration = duration;
+    return this;
+  }
+
+  /**
+   * Set the timer's elapsed time.
+   *
+   * @memberof Timer
+   * @this {Timer}
+   * @param {*} time The time that has elapsed (ms).
+   * @returns {Timer} The Timer instance.
+   */
+  setElapsedTime(time) {
+    this._time = time;
+    return this;
   }
 }
 
