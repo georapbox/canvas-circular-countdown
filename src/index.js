@@ -1,14 +1,16 @@
-import Timer from './timer';
-import drawCanvas from './drawCanvas';
-import makeHighResCanvas from './makeHighResCanvas';
-import normalise from './utils/normalise';
-import throttle from './utils/throttle';
+import Timer from './timer.js';
+import drawCanvas from './drawCanvas.js';
+import makeHighResCanvas from './makeHighResCanvas.js';
+import normalise from './utils/normalise.js';
+import throttle from './utils/throttle.js';
 
 export default class CanvasCircularCountdown {
   constructor(element, options, onTimerRunning) {
     const defaults = {
       duration: 60 * 1000, // ms
       elapsedTime: 0, // ms
+      throttle: void 0,
+      clockwise: false,
       radius: 150,
       progressBarWidth: 15,
       progressBarOffset: 5,

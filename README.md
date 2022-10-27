@@ -56,6 +56,8 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 | --- | --- | --- | --- |
 | `duration` | Number | `60 * 1000` | The timer's duration in milliseconds. Throws `TypeError` if the provided value is not a `Number` or is `NaN`. |
 | `elapsedTime` | Number | `0` | The time that has elapsed in milliseconds. Throws `TypeError` if the provided value is not a `Number` or is `NaN`. |
+| `throttle` | Number | `undefined` | Throttle duration in milliseconds. Must be a number lower or equal to the `duration` option. If provided, it limits the number of times the canvas is drawn in the given period, therefore the number of times the callback function `onTimerRunning` can be called. You can use it if you perform heavy tasks inside the `onTimerRunning` callback function to improve performance. Always prefer small numbers, eg. 250, etc |
+| `clockwise` | Boolean | `false` | Determines the direction of the progress ring. By default the direction is counterclockwise. |
 | `radius` | Number | `150` | The radius of the circular countdown in pixels. |
 | `progressBarWidth` | Number | `15` | The circular progress bar in pixels. |
 | `progressBarOffset` | Number | `5` | The number of pixels that will be left between the edges of the progress bar and the rest of the circle. |
@@ -67,7 +69,6 @@ new CanvasCircularCountdown(element, [options], [onTimerRunning])
 | `captionFont` <sup>1</sup> | String\|Function | `"20px sans-serif"` | The text style of the caption string. Check [here](https://developer.mozilla.org/en-US/docs/Web/CSS/font) for available values. |
 | `showCaption` <sup>1</sup> | Boolean\|Function | `true` | Whether the caption text inside the countdown circle will be displayed or not. |
 | `draw` | Function | `undefined` | A function that exposes `CanvasRenderingContext2D` to allow free drawing on the canvas element. The function is called with 2 arguments. The first argument is the `CanvasRenderingContext2D` and the second is an object with information like the canvas width/height, the remaining percentage and an object containing the remaining and elapsed time. |
-| `throttle` | Number | `undefined` | Throttle duration in milliseconds. Must be a number lower or equal to the `duration` option. If provided, it limits the number of times the canvas is drawn in the given period, therefore the number of times the callback function `onTimerRunning` can be called. You can use it if you perform heavy tasks inside the `onTimerRunning` callback function to improve performance. Always prefer small numbers, eg. 250, etc |
 
 <sup>1</sup> *If it is a function, the remaining percentage and an object containing the remaining and elapsed time are passed as parameters and it should return the appropriate type for each option. For example, for `showCaption` should return a boolean (true or false), but for `captionColor` should return a string. Useful when you need to change some options' values depending on the remaining percentage or the remaining/elapsed time.*
 
