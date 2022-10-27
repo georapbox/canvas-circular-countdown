@@ -1,7 +1,7 @@
 export default function drawCanvas(percentage, instance) {
   const { options: opts } = instance;
   const circleStart = 1.5 * Math.PI;
-  const circleEnd = circleStart + percentage / 50 * Math.PI;
+  const circleEnd = circleStart + (opts.clockwise ? -1 : 1) * (percentage / 50 * Math.PI);
   const ceiledPercentage = Math.ceil(percentage);
 
   // ensure that radius is not negative value
@@ -34,7 +34,7 @@ export default function drawCanvas(percentage, instance) {
   // draw filled bar
   if (opts.progressBarWidth) {
     instance._ctx.beginPath();
-    instance._ctx.arc(centerX, centerY, barRadius, circleStart, circleEnd, false);
+    instance._ctx.arc(centerX, centerY, barRadius, circleStart, circleEnd, !!opts.clockwise);
     instance._ctx.lineWidth = opts.progressBarWidth;
 
     instance._ctx.strokeStyle = typeof opts.filledProgressBarBackgroundColor === 'function'

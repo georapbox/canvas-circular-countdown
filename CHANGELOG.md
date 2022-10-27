@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.8.0 - 2022-10-27
+
+- Add `clockwise` option to control the direction of the progress ring. Resolves issue [#29](https://github.com/georapbox/canvas-circular-countdown/issues/29).
+
 ## v1.7.0 - 2022-08-22
 
 - Add instance methods `setDuration()` and `setElapsedTime()` to update the countdown's duration and elapsed time respectively, at any time, even when time is running. See issue [#26](https://github.com/georapbox/canvas-circular-countdown/issues/26).
