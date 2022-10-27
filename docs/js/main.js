@@ -1,6 +1,6 @@
 (async () => {
   const isLocalhost = window.location.href.includes('127.0.0.1') || window.location.href.includes('localhost');
-  const url = isLocalhost ? '../../dist/CanvasCircularCountdown.esm.js' : 'https://unpkg.com/canvas-circular-countdown/dist/CanvasCircularCountdown.esm.min.js';
+  const url = isLocalhost ? '../../src/index.js' : 'https://unpkg.com/canvas-circular-countdown/dist/CanvasCircularCountdown.esm.min.js';
   const { default: CanvasCircularCountdown } = await import(url);
   const countdownCanvas = document.getElementById('countdown-canvas');
   const startBtn = document.getElementById('start-btn');
@@ -131,7 +131,5 @@
     }, 1000);
   });
 
-  document.addEventListener('DOMContentLoaded', function () {
-    makeCode(countdown.options);
-  });
+  makeCode(countdown.options);
 })();
